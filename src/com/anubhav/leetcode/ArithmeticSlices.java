@@ -9,7 +9,7 @@ public class ArithmeticSlices {
 
 	
 	
-	public int numberOfArithmeticSlices(int[] A) {
+	public int numberOfArithmeticSlices1(int[] A) {
 		int N=A.length;
 		if(N<=2) return 0;
 		int start=0, end=1;
@@ -42,4 +42,33 @@ public class ArithmeticSlices {
 		return sum;
 
 	}
+	
+	
+	
+	//DP solution
+	
+	
+	public int numberOfArithmeticSlices(int[] A) {
+		int N=A.length;
+		if(N<=2) return 0;
+		int dp[]=new int[N];
+		int s=0;
+		dp[0]=dp[1]=0;
+		if(A[2]-A[1]==A[1]-A[0]){
+			dp[2]=1;
+			s=1;
+		}
+		for(int i=3;i<N;i++){
+			if(A[i]-A[i-1]==A[i-1]-A[i-2]){
+				dp[i]=dp[i-1]+1;
+				s+=dp[i];
+			}
+			else{
+				dp[i]=0;
+			}
+		}
+		return s;
+	}
+	
+	
 }
