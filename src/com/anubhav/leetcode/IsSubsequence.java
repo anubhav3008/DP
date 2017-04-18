@@ -1,9 +1,9 @@
 package com.anubhav.leetcode;
-//https://leetcode.com/problems/is-subsequence/#/description
+//https://leetcode.com/problems/is-subsequence/#/description nm,
 public class IsSubsequence {
 
 	public static void main(String[] args) {
-		boolean ans=new IsSubsequence().isSubsequence("acb","ahbgdc");
+		boolean ans=new IsSubsequence().isSubsequence("agx","ahbgdc");
 		System.out.println(ans);
 
 	}
@@ -20,7 +20,7 @@ public class IsSubsequence {
 			i++;
 			j++;
 		}
-		if(i==s.length() && j!=s.length()) return false;
+		if(i<s.length() && j>=t.length()) return false;
 		return true;
 
 
