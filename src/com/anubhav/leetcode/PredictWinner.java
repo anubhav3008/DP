@@ -4,7 +4,7 @@ public class PredictWinner {
 
 	public static void main(String[] args) {
 
-		int x[]={1,5,233,7};
+		int x[]={1,5,2};
 		boolean ans=new PredictWinner().PredictTheWinner(x);
 		System.out.println(ans);
 
@@ -17,19 +17,27 @@ public class PredictWinner {
 		for(int i=0;i<n;i++){
 			dp[i][i]=nums[i];
 		}
-		int inc=1;
-		int i=0;
-		int j=i+inc;
-		while(inc<n){
-			while(i+1<n && j<n){
+	
+		
+		for(int count=1;count<n;count++){
+			int i=0;
+			for(int j=count;j<n;j++){
+			//	System.out.print(i+","+j+" ") ;
 				dp[i][j]=Math.max(nums[i]-dp[i+1][j], nums[j]-dp[i][j-1]);
 				i++;
-				j++;
 			}
-			inc++;
+			//System.out.println();
 		}
-
-		System.out.println("************");
+		/*
+		 for (int len = 1; len < n; len++) {
+		        for (int i = 0; i < n - len; i++) {
+		            int j = i + len;
+		            dp[i][j] = Math.max(nums[i] - dp[i + 1][j], nums[j] - dp[i][j - 1]);
+		        }
+		    }*/
+		
+	
+/*		System.out.println("************");
 
 		for(int x=0;x<n;x++){
 			for(int y=0;y<n;y++){
@@ -37,7 +45,11 @@ public class PredictWinner {
 			}
 			System.out.println();
 		}
+		
+		*/
 		return dp[0][n-1]>=0;
+		
+		
 	}
 
 }
